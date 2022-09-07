@@ -25,7 +25,8 @@ public class InputManager : MonoBehaviour
         groundMovement = controls.GroundMovement;
 
 
-
+        //ctx is the value so if something is a button it doesnt need context since their is no value to read
+        //these are event lambadas if they cause problems switch later
         groundMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
         groundMovement.Jump.performed += _ => movement.OnJumpPressed();
 
