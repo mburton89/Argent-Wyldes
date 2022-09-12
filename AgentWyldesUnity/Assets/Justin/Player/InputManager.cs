@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InputManager : MonoBehaviour
 {
 
@@ -11,12 +12,12 @@ public class InputManager : MonoBehaviour
     Movement movement;
     [SerializeField]
     MouseLook mouseLook;
-
+    
 
     PlayerControls controls;
     PlayerControls.GroundMovementActions groundMovement;
 
-    Vector2 horizontalInput;
+    public Vector2  horizontalInput;
     Vector2 mounseInput;
 
     private void Awake()
