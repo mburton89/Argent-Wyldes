@@ -29,6 +29,8 @@ public class InputManager : MonoBehaviour
         //ctx is the value so if something is a button it doesnt need context since their is no value to read
         //these are event lambadas if they cause problems switch later
         groundMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
+        groundMovement.Crouch.performed += _ => movement.OnCrouch();
+        groundMovement.Crouch.canceled += _ => movement.crouch = false;
         groundMovement.Jump.performed += _ => movement.OnJumpPressed();
 
         groundMovement.MouseX.performed += ctx => mounseInput.x = ctx.ReadValue<float>();
@@ -45,14 +47,16 @@ public class InputManager : MonoBehaviour
 
     private void OnDisable()
     {
-        controls.Disable(); 
-
+        controls.Disable();
+        groundMovement.Crouch.performed -= _ => movement.OnCrouch();
+       groundMovement.Crouch.canceled -= _ => movement.crouch = false;
 
 
     }
 
     private void Update()
     {
+        
         movement.ReceieveInput(horizontalInput);
         mouseLook.ReceieveInput(mounseInput);
     }

@@ -13,19 +13,23 @@ public class Movement : MonoBehaviour
     [SerializeField] InputManager inputManager;
     [SerializeField] PlayerInput playerInput;
     [SerializeField] float speed = 11f;
+    [SerializeField] float crouchspeed = 1.1f;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] LayerMask groundmask;
     [SerializeField] float jumpheight = 3.5f;
     [SerializeField] float animationSmoothTime = 0.1f;
 
     private Animator animator;
-   
+
     int moveXParameterId;
     private InputAction moveaction;
     private InputAction jumpaction;
+    private InputAction crouchaction;
     int moveZParameterId;
     int jumpAnimation;
+    int crouchAnimation;
     bool jump;
+    public bool crouch;
     bool isgrounded;
     Vector2 currentAnimationnBlendVector;
     Vector2 animationVelocity;
@@ -39,17 +43,20 @@ public class Movement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         inputManager = GetComponent<InputManager>();
         jumpAnimation = Animator.StringToHash("Jump");
+        crouchAnimation = Animator.StringToHash("Jump");
 
         moveaction = playerInput.actions["Horizontal Movement"];
         jumpaction = playerInput.actions["Jump"];
+        crouchaction = playerInput.actions["Crouch"];
+
 
         moveXParameterId = Animator.StringToHash("MoveX");
         moveZParameterId = Animator.StringToHash("MoveZ");
     }
     private void Update()
     {
-        
-        
+
+       
 
         isgrounded = controller.isGrounded;
         if (isgrounded)
@@ -65,11 +72,19 @@ public class Movement : MonoBehaviour
             verticalVelocity.y = 0;
         }
         horizontalInput = moveaction.ReadValue<Vector2>();
-       
+
         currentAnimationnBlendVector = Vector2.SmoothDamp(currentAnimationnBlendVector, horizontalInput, ref animationVelocity, animationSmoothTime);
 
         Vector3 horizontalVelocity = new Vector3(currentAnimationnBlendVector.x, 0, currentAnimationnBlendVector.y);
-        horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * speed;
+        if (crouch)
+        {
+            horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * crouchspeed;
+        }
+        else
+        {
+            horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * speed;
+
+        }
         controller.Move(horizontalVelocity * Time.deltaTime);
         animator.SetFloat(moveXParameterId, currentAnimationnBlendVector.x);
         animator.SetFloat(moveZParameterId, currentAnimationnBlendVector.y);
@@ -79,13 +94,27 @@ public class Movement : MonoBehaviour
         {
             if (isgrounded & jumpaction.triggered)
             {
-                verticalVelocity.y += Mathf.Sqrt(-2f * jumpheight * gravity);
                 animator.CrossFade(jumpAnimation, animationPlayTransition);
+
+                verticalVelocity.y += Mathf.Sqrt(-2f * jumpheight * gravity);
             }
             jump = false;
         }
 
-
+        if (crouch)
+        {
+            print("crouch is true");
+            if (isgrounded )
+            {
+                animator.SetBool("isCrouch",true );
+            }
+        }
+        else
+        {
+            animator.SetBool("isCrouch", false);
+            crouch = false;
+            print("crouch is false");
+        }
 
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
@@ -104,7 +133,10 @@ public class Movement : MonoBehaviour
     {
         jump = true;
     }
-
+    public void OnCrouch()
+    {
+        crouch = true;
+    }
 
 
 }
