@@ -12,7 +12,8 @@ public class InputManager : MonoBehaviour
     Movement movement;
     [SerializeField]
     MouseLook mouseLook;
-    
+    public bool Jump_Input;
+
 
     PlayerControls controls;
     PlayerControls.GroundMovementActions groundMovement;
@@ -31,7 +32,7 @@ public class InputManager : MonoBehaviour
         groundMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
         groundMovement.Crouch.performed += _ => movement.OnCrouch();
         groundMovement.Crouch.canceled += _ => movement.crouch = false;
-        groundMovement.Jump.performed += _ => movement.OnJumpPressed();
+        groundMovement.Jump.performed += _ => Jump_Input = true;
 
         groundMovement.MouseX.performed += ctx => mounseInput.x = ctx.ReadValue<float>();
         groundMovement.MouseY.performed += ctx => mounseInput.y = ctx.ReadValue<float>();
@@ -56,13 +57,27 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        
+        HandleJumpingInput();
         movement.ReceieveInput(horizontalInput);
         mouseLook.ReceieveInput(mounseInput);
     }
 
 
+    private void HandleJumpingInput()
+    {
 
+        if (Jump_Input)
+        {
+            Jump_Input = false;
+            movement.HandleJump();
+        }
+
+
+
+
+
+
+    }
 
 }
 

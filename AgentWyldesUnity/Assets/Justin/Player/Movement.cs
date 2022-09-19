@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     private Animator animator;
 
     int moveXParameterId;
+    private int jumpParameter;
     private InputAction moveaction;
     private InputAction jumpaction;
     private InputAction crouchaction;
@@ -31,11 +32,13 @@ public class Movement : MonoBehaviour
     bool jump;
     public bool crouch;
     bool isgrounded;
+    bool isJumping;
     Vector2 currentAnimationnBlendVector;
     Vector2 animationVelocity;
     Vector3 verticalVelocity = Vector3.zero;
     Vector2 horizontalInput;
     private float animationPlayTransition = 0.15f;
+    private int jumpParameter1;
 
     private void Awake()
     {
@@ -51,17 +54,24 @@ public class Movement : MonoBehaviour
 
 
         moveXParameterId = Animator.StringToHash("MoveX");
+        jumpParameter = Animator.StringToHash("isJumping");
+        jumpParameter1 = Animator.StringToHash("isJumping1");
+
         moveZParameterId = Animator.StringToHash("MoveZ");
     }
     private void Update()
     {
 
-       
 
+        if (isJumping)
+        {
+            return;
+        }
         isgrounded = controller.isGrounded;
         if (isgrounded)
         {
             print("isgrounded");
+            
         }
         else
         {
@@ -85,21 +95,44 @@ public class Movement : MonoBehaviour
             horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * speed;
 
         }
-        controller.Move(horizontalVelocity * Time.deltaTime);
-        animator.SetFloat(moveXParameterId, currentAnimationnBlendVector.x);
-        animator.SetFloat(moveZParameterId, currentAnimationnBlendVector.y);
+        if (isJumping)
+        {
+            return;
+        }
+        else
+        {
+            controller.Move(horizontalVelocity * Time.deltaTime);
+            animator.SetFloat(moveXParameterId, currentAnimationnBlendVector.x);
+            animator.SetFloat(moveZParameterId, currentAnimationnBlendVector.y);
+        }
+       
 
         //jump height equation: v = sqrt(-2 * jumpheight * gravity
-        if (jump)
-        {
-            if (isgrounded & jumpaction.triggered)
-            {
-                animator.CrossFade(jumpAnimation, animationPlayTransition);
+        //if (jump)
+        //{
+        //   //isJumping = animator.GetBool(jumpParameter);
+            
+        //    if (isgrounded && jumpaction.triggered)
+        //    {
+        //        //animator.CrossFade(jumpAnimation, animationPlayTransition);
 
-                verticalVelocity.y += Mathf.Sqrt(-2f * jumpheight * gravity);
-            }
-            jump = false;
-        }
+        //        animator.SetBool(jumpParameter, true);
+
+
+
+        //        verticalVelocity.y += Mathf.Sqrt(-2f * jumpheight * gravity);
+        //    }
+        //    if (jump = true)
+        //    {
+        //        return;
+        //    }
+        //    jump = false;
+        //    animator.SetBool(jumpParameter, false);
+
+        //    //animator.SetBool(jumpParameter, jump);
+
+
+        //}
 
         if (crouch)
         {
@@ -119,6 +152,7 @@ public class Movement : MonoBehaviour
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
         print(isgrounded);
+        Debug.Log(animator.GetCurrentAnimatorStateInfo(0));
     }
 
     public void ReceieveInput(Vector2 _horizontalInput)
@@ -127,6 +161,50 @@ public class Movement : MonoBehaviour
 
 
         horizontalInput = _horizontalInput;
+    }
+
+
+    public void HandleJump()
+    {
+
+        isJumping = inputManager.Jump_Input;
+
+        if (jumpaction.triggered && isgrounded)
+        {
+
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+            {
+                animator.SetTrigger(jumpParameter1);
+                print("hi jump");
+            }
+           
+
+            //animator.SetBool(jumpParameter, true);
+
+            //jumpingVelocity = Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            //playerVelocity = move2Direction;
+            //playerVelocity.y = jumpingVelocity;
+            //animator.CrossFade(jumpAnimation, animationPlayTransition);
+            //if (inputManager.Jump_Input)
+            //{
+            //    return;
+            //}
+        }
+        else
+        {
+                animator.ResetTrigger(jumpParameter1);
+
+        }
+        if (inputManager.Jump_Input)
+        {
+            return;
+        }
+
+        inputManager.Jump_Input = false;
+        //animator.SetBool(jumpParameter, false);
+
+
+
     }
 
     public void OnJumpPressed()
