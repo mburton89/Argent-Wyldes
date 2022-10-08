@@ -18,8 +18,22 @@ public class PlayerNetwork : NetworkBehaviour
     [SerializeField] float animationSmoothTime = 0.1f;
     PlayerControls controls;
     PlayerControls.GroundMovementActions groundMovement;
+    private NetworkVariable<int> randomNuumber = new NetworkVariable<int>(1);
+
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+    }
+
+
+
     private void Awake()
     {
+
+
+
+
         //rigidbodyy = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
@@ -33,6 +47,7 @@ public class PlayerNetwork : NetworkBehaviour
 
     private void Movement_performed(InputAction.CallbackContext obj)
     {
+          
         horizontalInput = moveaction.ReadValue<Vector2>();
         currentAnimationnBlendVector = Vector2.SmoothDamp(currentAnimationnBlendVector, horizontalInput, ref animationVelocity, animationSmoothTime);
         Vector3 horizontalVelocity = new Vector3(currentAnimationnBlendVector.x, 0, currentAnimationnBlendVector.y);
