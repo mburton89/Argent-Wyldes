@@ -42,16 +42,16 @@ public class NetworkMovement : NetworkBehaviour
     private float animationPlayTransition = 0.15f;
     private int jumpParameter1;
 
-    public override void OnNetworkSpawn()
-    {
+    //public override void OnNetworkSpawn()
+    //{
       
-        if (IsClient && IsOwner)
-        {
-            playerInput = GetComponent<PlayerInput>();
-            playerInput.enabled = true;
+    //    if  (isOwner)
+    //    {
+    //        playerInput = GetComponent<PlayerInput>();
+    //        playerInput.enabled = true;
 
-        }
-    }
+    //    }
+    //}
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -62,7 +62,7 @@ public class NetworkMovement : NetworkBehaviour
         moveaction = playerInput.actions["Horizontal Movement"];
         jumpaction = playerInput.actions["Jump"];
         crouchaction = playerInput.actions["Crouch"];
-        playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera");
+        //playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera");
 
         moveXParameterId = Animator.StringToHash("MoveX");
         jumpParameter = Animator.StringToHash("isJumping");

@@ -17,7 +17,11 @@ public class NetworkMouseLook : NetworkBehaviour
 
     private void Awake()
     {
-        playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera");
+        if (playerCamera == null)
+        {
+            playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera");
+
+        }
     }
 
 

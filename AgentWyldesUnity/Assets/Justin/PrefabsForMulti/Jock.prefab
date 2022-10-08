@@ -169,7 +169,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: GroundMovement
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 629143090757041288}
 --- !u!114 &629143089902466260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivityX: 8
   sensitivityY: 0.05
-  playerCamera: {fileID: 629143090757041293}
+  playerCamera: {fileID: 629143090757041292}
+  playerCameraTransform: {fileID: 629143090757041293}
   xClamp: 85
 --- !u!114 &629143089902466269
 MonoBehaviour:
