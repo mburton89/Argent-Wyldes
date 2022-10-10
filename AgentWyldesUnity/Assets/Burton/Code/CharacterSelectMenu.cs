@@ -4,13 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CharacterSelectMenu : MonoBehaviour
 {
     public static CharacterSelectMenu Instance;
 
     [SerializeField] List<GameObject> playerModels;
-    Transform currentPlayerModel;
+    int currentPlayerModelIndex;
+
+    [SerializeField] TextMeshProUGUI playerText;
+    [SerializeField] TextMeshProUGUI playerTextOutline;
+
     [SerializeField] Button monsterButton;
     [SerializeField] Button jockButton;
     [SerializeField] Button gothButton;
@@ -20,6 +25,8 @@ public class CharacterSelectMenu : MonoBehaviour
     [SerializeField] Button partyGuyButton;
     [SerializeField] Button playButton;
 
+    [SerializeField] List<GameObject> buttonOutlines;
+
     void Awake()
     {
         Instance = this;
@@ -27,7 +34,7 @@ public class CharacterSelectMenu : MonoBehaviour
 
     private void Start()
     {
-        currentPlayerModel = playerModels[2].transform;
+        currentPlayerModelIndex = 2; //Goth
     }
 
     private void OnEnable()
@@ -44,14 +51,25 @@ public class CharacterSelectMenu : MonoBehaviour
 
     void HandlePlayerSelected(int index)
     {
-        currentPlayerModel.localScale = Vector3.zero;
+        playerModels[currentPlayerModelIndex].transform.localScale = Vector3.zero;
+        buttonOutlines[currentPlayerModelIndex].SetActive(false);
+
         PlayerPrefs.SetInt("currentPlayerIndex", index);
+
         playerModels[PlayerPrefs.GetInt("currentPlayerIndex")].transform.localScale = Vector3.one;
-        currentPlayerModel = playerModels[PlayerPrefs.GetInt("currentPlayerIndex")].transform;
+
+        currentPlayerModelIndex = PlayerPrefs.GetInt("currentPlayerIndex");
+        buttonOutlines[currentPlayerModelIndex].SetActive(true);
+
+        playerText.SetText(playerModels[PlayerPrefs.GetInt("currentPlayerIndex")].gameObject.name);
+        playerTextOutline.SetText(playerModels[PlayerPrefs.GetInt("currentPlayerIndex")].gameObject.name);
+
+        SoundManager.Instance.buttonClick.Play();
     }
 
     void HandlePlayPressed()
     {
+        SoundManager.Instance.buttonClick.Play();
         SceneManager.LoadScene(2);
     }
 }

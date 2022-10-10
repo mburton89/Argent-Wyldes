@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Justin/Scene/MultiplayerTest.unity
     guid: 1be29afdd487fc747a5350e8600debf8
+  - enabled: 1
+    path: Assets/Burton/Scenes/Character Select Menu.unity
+    guid: 8353e8ae88dd6484084683d1a1c22d47
+  - enabled: 1
+    path: Assets/Will/MapStuff/WillTest 1.unity
+    guid: a0ce1d98fd08e31449e27404938a3600
   m_configObjects: {}
