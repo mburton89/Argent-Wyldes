@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Netcode;
+using Cinemachine;
 
 public class NetworkMovement : NetworkBehaviour
 {
@@ -19,9 +20,13 @@ public class NetworkMovement : NetworkBehaviour
     [SerializeField] LayerMask groundmask;
     [SerializeField] float jumpheight = 3.5f;
     [SerializeField] float animationSmoothTime = 0.1f;
+    [SerializeField] Transform followTarget;
 
     private Animator animator;
     private GameObject playerCamera;
+    private GameObject _mainCamera;
+    private CinemachineVirtualCamera _cinemachineVirtualCamera;
+
 
     int moveXParameterId;
     private int jumpParameter;
@@ -42,16 +47,16 @@ public class NetworkMovement : NetworkBehaviour
     private float animationPlayTransition = 0.15f;
     private int jumpParameter1;
 
-    //public override void OnNetworkSpawn()
-    //{
-      
-    //    if  (isOwner)
-    //    {
-    //        playerInput = GetComponent<PlayerInput>();
-    //        playerInput.enabled = true;
-
-    //    }
-    //}
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        if (IsClient  && IsOwner)
+        {
+            playerInput = GetComponent<PlayerInput>();
+            playerInput.enabled = true;
+            _cinemachineVirtualCamera.Follow = followTarget;
+        }
+    }
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -62,6 +67,15 @@ public class NetworkMovement : NetworkBehaviour
         moveaction = playerInput.actions["Horizontal Movement"];
         jumpaction = playerInput.actions["Jump"];
         crouchaction = playerInput.actions["Crouch"];
+        if (_mainCamera == null)
+        {
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+        if (_cinemachineVirtualCamera == null)
+        {
+            _cinemachineVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        }
+
         //playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera");
 
         moveXParameterId = Animator.StringToHash("MoveX");
