@@ -16,16 +16,21 @@ public class CharacterSelection : NetworkBehaviour
 
     private int currentCharacterIndex = 0; //which character is current showing 
     private List<GameObject> characterInstances = new List<GameObject>(); //how many characters are avaible or if it is hovered or not 
+    private ulong cilentId;
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-        foreach (var character  in Characters)
-        {
-            GameObject characterInstance = Instantiate(character.CharacterPreviewfab, characterPreviewParent); //creates the preview prefab under the preview parent transform
-            characterInstance.SetActive(false); //turns off whichever characterInstance isnt being viewed
-            characterInstances.Add(characterInstance); //adds to the the list of which to spawn
-        }
+        //if (characterPreviewParent.childCount ==0)
+        //{
+            foreach (var character in Characters)
+            {
+                GameObject characterInstance = Instantiate(character.CharacterPreviewfab, characterPreviewParent); //creates the preview prefab under the preview parent transform
+                characterInstance.SetActive(false); //turns off whichever characterInstance isnt being viewed
+                characterInstances.Add(characterInstance); //adds to the the list of which to spawn
+            }
+        //}
+       
         characterInstances[currentCharacterIndex].SetActive(true); // turns on current index otherwise it is false 
         characterNameText.text = Characters[currentCharacterIndex].CharacterName; //ui text is set to the name of the scriptable object
 
@@ -60,5 +65,19 @@ public class CharacterSelection : NetworkBehaviour
         characterNameText.text = Characters[currentCharacterIndex].CharacterName;
     }
 
+    public void Select()
+    {
+
+        //characterSelect(currentCharacterIndex);
+        GameObject characterInstance = Instantiate(Characters[currentCharacterIndex].CharacterGameplayPrefab);
+       NetworkObject characterToSpawn = characterInstance.GetComponent<NetworkObject>();
+        characterToSpawn.SpawnAsPlayerObject(cilentId);
+        characterSelectDispaly.SetActive(false);
+    }
+    public void characterSelect(int characterIndex)
+    {
+        GameObject characterInstance = Instantiate(Characters[characterIndex].CharacterGameplayPrefab);
+        characterInstance.GetComponent<NetworkObject>().Spawn();
+    }
 
 }
