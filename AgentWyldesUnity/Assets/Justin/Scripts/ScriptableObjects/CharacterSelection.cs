@@ -13,6 +13,7 @@ public class CharacterSelection : NetworkBehaviour
     [SerializeField] private TMP_Text characterNameText = default;
     [SerializeField] private float turnspeed = 90f; // how fast the player rotates when viewing
     [SerializeField] private Character[] Characters = default; //array of the scriptable objects
+    private NetworkObject playerToSpawn;
 
     private int currentCharacterIndex = 0; //which character is current showing 
     private List<GameObject> characterInstances = new List<GameObject>(); //how many characters are avaible or if it is hovered or not 
@@ -26,7 +27,9 @@ public class CharacterSelection : NetworkBehaviour
             foreach (var character in Characters)
             {
                 GameObject characterInstance = Instantiate(character.CharacterPreviewfab, characterPreviewParent); //creates the preview prefab under the preview parent transform
-                characterInstance.SetActive(false); //turns off whichever characterInstance isnt being viewed
+            //NetworkObject NetworkcharacterInstance = characterInstance.GetComponent<NetworkObject>();
+            //NetworkcharacterInstance.SpawnWithOwnership(OwnerClientId);
+                characterInstance.SetActive(false); //tu;rns off whichever characterInstance isnt being viewed
                 characterInstances.Add(characterInstance); //adds to the the list of which to spawn
             }
         //}
@@ -71,7 +74,9 @@ public class CharacterSelection : NetworkBehaviour
         //characterSelect(currentCharacterIndex);
         GameObject characterInstance = Instantiate(Characters[currentCharacterIndex].CharacterGameplayPrefab);
        NetworkObject characterToSpawn = characterInstance.GetComponent<NetworkObject>();
-        characterToSpawn.SpawnAsPlayerObject(cilentId);
+        playerToSpawn = characterToSpawn;
+        SpawnCharacterServerRpc();
+        Debug.Log(OwnerClientId);
         characterSelectDispaly.SetActive(false);
     }
     public void characterSelect(int characterIndex)
@@ -79,5 +84,24 @@ public class CharacterSelection : NetworkBehaviour
         GameObject characterInstance = Instantiate(Characters[characterIndex].CharacterGameplayPrefab);
         characterInstance.GetComponent<NetworkObject>().Spawn();
     }
+    [ServerRpc]
+    private void SpawnCharacterServerRpc()
+    {
+        //if (IsOwner)
+        //{
+        //    return;
+        //}
 
+        playerToSpawn.SpawnAsPlayerObject(OwnerClientId);
+    }
+    [ClientRpc]
+    private void SpawnCharacteClientRpc()
+    {
+        if (IsOwner)
+        {
+            return;
+        }
+
+        playerToSpawn.SpawnAsPlayerObject(OwnerClientId);
+    }
 }

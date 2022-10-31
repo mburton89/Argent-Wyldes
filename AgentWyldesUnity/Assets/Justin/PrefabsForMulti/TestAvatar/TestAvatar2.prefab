@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5a678e723badd4f8c6c3b5d7cb7c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 754732957}
   inputManager: {fileID: 754732947}
   playerInput: {fileID: 754732950}
   speed: 11
