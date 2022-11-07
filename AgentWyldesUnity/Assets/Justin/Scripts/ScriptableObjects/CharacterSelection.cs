@@ -70,38 +70,100 @@ public class CharacterSelection : NetworkBehaviour
 
     public void Select()
     {
-
+        //if (!IsOwner)
+        //{
+        //    return;
+        //}
         //characterSelect(currentCharacterIndex);
-        GameObject characterInstance = Instantiate(Characters[currentCharacterIndex].CharacterGameplayPrefab);
-       NetworkObject characterToSpawn = characterInstance.GetComponent<NetworkObject>();
-        playerToSpawn = characterToSpawn;
-        SpawnCharacterServerRpc();
+        //GameObject characterInstance = Instantiate(Characters[currentCharacterIndex].CharacterGameplayPrefab);
+        //NetworkObject characterToSpawn = characterInstance.GetComponent<NetworkObject>();
+        //playerToSpawn = characterToSpawn;
+        //characterInstance.SetActive(true);
+        //playerToSpawn.SpawnAsPlayerObject(OwnerClientId, true);
+        //SpawnCharacteClientRpc(/*NetworkManager.Singleton.LocalClientId*/);
+        if (IsHost)
+        {
+            //characterSelect(currentCharacterIndex);
+            GameObject characterInstance = Instantiate(Characters[currentCharacterIndex].CharacterGameplayPrefab);
+            NetworkObject characterToSpawn = characterInstance.GetComponent<NetworkObject>();
+            playerToSpawn = characterToSpawn;
+            //characterInstance.SetActive(true);
+            playerToSpawn.SpawnAsPlayerObject(NetworkManager.Singleton.LocalClientId);
+            characterSelectDispaly.SetActive(false);
+        }
+        else
+        {
+            SpawnCharacterServerRpc(currentCharacterIndex, NetworkManager.Singleton.LocalClientId);
+            //SpawnCharacteClientRpc(currentCharacterIndex, NetworkManager.Singleton.LocalClientId);
+            characterSelectDispaly.SetActive(false);
+        }
+        //SpawnCharacterServerRpc(NetworkManager.Singleton.LocalClientId);
         Debug.Log(OwnerClientId);
-        characterSelectDispaly.SetActive(false);
+        //characterSelectDispaly.SetActive(false);
     }
     public void characterSelect(int characterIndex)
     {
         GameObject characterInstance = Instantiate(Characters[characterIndex].CharacterGameplayPrefab);
         characterInstance.GetComponent<NetworkObject>().Spawn();
+        
     }
-    [ServerRpc]
-    private void SpawnCharacterServerRpc()
+    [ServerRpc(RequireOwnership = false)]
+    //private void SpawnCharacterServerRpc(ServerRpcParams serverRpcParams = default)
+    private void SpawnCharacterServerRpc(int charaterIndex,ulong clientId)
     {
-        //if (IsOwner)
+        //public void SpawnPlayerServerRpc(ulong clientId, int prefabId)
+        //{
+        //    GameObject newPlayer;
+        //    if (prefabId == 0)
+        //        newPlayer = (GameObject)Instantiate(playerPrefabA);
+        //    else
+        //        newPlayer = (GameObject)Instantiate(playerPrefabB);
+        //    netObj = newPlayer.GetComponent<NetworkObject>();
+        //    newPlayer.SetActive(true);
+        //    netObj.SpawnAsPlayerObject(clientId, true);
+
+        //}
+        //var clientId = serverRpcParams.Receive.SenderClientId;
+        //if (NetworkManager.ConnectedClients.ContainsKey(clientId))
+        //{
+        //    var client = NetworkManager.ConnectedClients[clientId];
+            GameObject characterInstance = Instantiate( Characters[charaterIndex].CharacterGameplayPrefab);
+            NetworkObject characterToSpawn = characterInstance.GetComponent<NetworkObject>();
+            playerToSpawn = characterToSpawn;
+            //characterInstance.SetActive(true);
+            playerToSpawn.SpawnAsPlayerObject(clientId, true);
+
+
+        //}
+        
+           
+
+
+        //if (!IsOwner)
         //{
         //    return;
         //}
 
-        playerToSpawn.SpawnAsPlayerObject(OwnerClientId);
+        //playerToSpawn.SpawnAsPlayerObject(OwnerClientId);
     }
     [ClientRpc]
-    private void SpawnCharacteClientRpc()
+    private void SpawnCharacteClientRpc(int charaterIndex, ulong clientId)
     {
-        if (IsOwner)
-        {
-            return;
-        }
+        //if (!IsOwner)
+        //{
+        //    return;
+        //}
+        //GameObject characterInstance = Characters[currentCharacterIndex].CharacterGameplayPrefab;
+        //NetworkObject characterToSpawn = characterInstance.GetComponent<NetworkObject>();
+        //playerToSpawn = characterToSpawn;
+        //characterInstance.SetActive(true);
+        //playerToSpawn.SpawnAsPlayerObject(OwnerClientId, true);
 
-        playerToSpawn.SpawnAsPlayerObject(OwnerClientId);
+
+        GameObject characterInstance = Instantiate(Characters[charaterIndex].CharacterGameplayPrefab);
+        NetworkObject characterToSpawn = characterInstance.GetComponent<NetworkObject>();
+        playerToSpawn = characterToSpawn;
+        //characterInstance.SetActive(true);
+        playerToSpawn.SpawnAsPlayerObject(clientId, true);
     }
 }
