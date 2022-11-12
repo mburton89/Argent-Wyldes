@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: ea168521f0b658943a8531407f61f178
+guid: 274e22e2f45787d4f9045cf477941b5a
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -4921064960529875563
+    second: pasted__pCube8|pasted__pCube8|Take 001|BaseLayer
   externalObjects: {}
   materials:
     materialImportMode: 2
