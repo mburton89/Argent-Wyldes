@@ -864,11 +864,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 1
-  cloudProjectId: 
+  cloudProjectId: 44df8c05-4aa4-4e21-8926-866f66cfa544
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: AgentWyldesUnityMultiplayerTest (1)
+  organizationId: jt3667316
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
