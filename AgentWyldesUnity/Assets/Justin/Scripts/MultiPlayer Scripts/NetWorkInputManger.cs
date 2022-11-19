@@ -34,7 +34,8 @@ public class NetWorkInputManger : NetworkBehaviour
         groundMovement.Crouch.performed += _ => movement.OnCrouch();
         groundMovement.Crouch.canceled += _ => movement.crouch = false;
         groundMovement.Jump.performed += _ => Jump_Input = true;
-
+        groundMovement.Sprint.performed += _ => movement.OnSprint();
+        groundMovement.Sprint.canceled += _ => movement.sprint = false;
         groundMovement.MouseX.performed += ctx => mounseInput.x = ctx.ReadValue<float>();
         groundMovement.MouseY.performed += ctx => mounseInput.y = ctx.ReadValue<float>();
 
@@ -52,6 +53,8 @@ public class NetWorkInputManger : NetworkBehaviour
         controls.Disable();
         groundMovement.Crouch.performed -= _ => movement.OnCrouch();
         groundMovement.Crouch.canceled -= _ => movement.crouch = false;
+        groundMovement.Sprint.performed -= _ => movement.OnSprint();
+        groundMovement.Sprint.canceled -= _ => movement.sprint = false;
 
 
     }

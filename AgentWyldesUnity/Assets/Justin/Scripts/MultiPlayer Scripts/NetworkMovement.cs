@@ -16,6 +16,7 @@ public class NetworkMovement : NetworkBehaviour
     [SerializeField] PlayerInput playerInput;
     [SerializeField] float speed = 11f;
     [SerializeField] float crouchspeed = 1.1f;
+    [SerializeField] float sprintspeed = 20f;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] LayerMask groundmask;
     [SerializeField] float jumpheight = 3.5f;
@@ -33,10 +34,13 @@ public class NetworkMovement : NetworkBehaviour
     private InputAction moveaction;
     private InputAction jumpaction;
     private InputAction crouchaction;
+    private InputAction sprintaction;
     int moveZParameterId;
     int jumpAnimation;
     int crouchAnimation;
+    int sprintAnimation;
     bool jump;
+   public bool sprint;
     public bool crouch;
     bool isgrounded;
     bool isJumping;
@@ -62,9 +66,11 @@ public class NetworkMovement : NetworkBehaviour
         animator = GetComponent<Animator>();
         inputManager = GetComponent<NetWorkInputManger>();
         jumpAnimation = Animator.StringToHash("Jump");
-        crouchAnimation = Animator.StringToHash("Jump");
+        crouchAnimation = Animator.StringToHash("Crouch");
+        sprintAnimation = Animator.StringToHash("isSprinting");
 
         moveaction = playerInput.actions["Horizontal Movement"];
+        sprintaction = playerInput.actions["Sprint"];
         jumpaction = playerInput.actions["Jump"];
         crouchaction = playerInput.actions["Crouch"];
         if (_mainCamera == null)
@@ -114,9 +120,13 @@ public class NetworkMovement : NetworkBehaviour
         currentAnimationnBlendVector = Vector2.SmoothDamp(currentAnimationnBlendVector, horizontalInput, ref animationVelocity, animationSmoothTime);
 
         Vector3 horizontalVelocity = new Vector3(currentAnimationnBlendVector.x, 0, currentAnimationnBlendVector.y);
-        if (crouch)
+        if (crouch && !sprint)
         {
             horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * crouchspeed;
+        }
+        else if (!crouch && sprint )
+        {
+            horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * sprintspeed;
         }
         else
         {
@@ -170,13 +180,27 @@ public class NetworkMovement : NetworkBehaviour
                 animator.SetBool("isCrouch", true);
             }
         }
+
         else
         {
             animator.SetBool("isCrouch", false);
             crouch = false;
             print("crouch is false");
         }
+        if (sprint)
+        {
+            if (isgrounded)
+            {
+                animator.SetBool(sprintAnimation, true);
 
+            }
+        }
+        else
+        {
+            animator.SetBool(sprintAnimation, false);
+            sprint = false;
+       
+        }
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
         print(isgrounded);
@@ -242,6 +266,10 @@ public class NetworkMovement : NetworkBehaviour
     public void OnCrouch()
     {
         crouch = true;
+    }
+    public void OnSprint()
+    {
+        sprint = true;
     }
 
 

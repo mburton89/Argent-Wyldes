@@ -411,6 +411,7 @@ MonoBehaviour:
   playerInput: {fileID: 754732950}
   speed: 11
   crouchspeed: 1.1
+  sprintspeed: 20
   gravity: -9.81
   groundmask:
     serializedVersion: 2
@@ -418,6 +419,7 @@ MonoBehaviour:
   jumpheight: 3.5
   animationSmoothTime: 0.1
   followTarget: {fileID: 440482402}
+  sprint: 0
   crouch: 0
 --- !u!114 &754732949
 MonoBehaviour:
