@@ -102,7 +102,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 112
+  controlID: 167
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 19
+  controlID: 250
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: LightingWindow
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -247,14 +247,14 @@ MonoBehaviour:
     y: 0
     width: 483
     height: 1347
-  m_MinSize: {x: 391, y: 411}
+  m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -632,9 +632,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -5413.6865, y: -1475.5374, z: -2132.9211}
+    m_Target: {x: -3092.456, y: -1619.0648, z: -5069.7173}
     speed: 2
-    m_Value: {x: -5413.6865, y: -1475.5374, z: -2132.9211}
+    m_Value: {x: -3092.456, y: -1619.0648, z: -5069.7173}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -681,11 +681,11 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.08139005, y: 0.8194762, z: -0.11685817, w: -0.5560547}
+    m_Target: {x: -0.047840632, y: 0.94214046, z: -0.14512183, w: -0.3002389}
     speed: 2
-    m_Value: {x: -0.08117335, y: 0.819892, z: -0.116920605, w: -0.5545426}
+    m_Value: {x: -0.048262976, y: 0.9413941, z: -0.1464531, w: -0.29999885}
   m_Size:
-    m_Target: 3434.376
+    m_Target: 3588.9229
     speed: 2
     m_Value: 3434.376
   m_Ortho:
@@ -831,9 +831,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: dadeffffdcf9ffff
+      m_SelectedIDs: d2730000
+      m_LastClickedID: 29650
+      m_ExpandedIDs: 0ce9ffff32fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -899,22 +899,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Will/FBX
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Will/FBX
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\ederw\OneDrive\Documents\Argent-Wyldes\AgentWyldesUnity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 164}
-    m_SelectedIDs: 4e870000
-    m_LastClickedID: 34638
-    m_ExpandedIDs: 0000000020850000228500002485000026850000288500002a8500002c8500002e8500003285000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: be840000
+    m_LastClickedID: 33982
+    m_ExpandedIDs: 00000000be840000c0840000c2840000c4840000c6840000c8840000ca840000cc840000d686000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -942,7 +942,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000020850000228500002485000026850000288500002a8500002c8500002e8500003085000032850000
+    m_ExpandedIDs: 00000000be840000c0840000c2840000c4840000c6840000c8840000ca840000cc840000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000dabe0000329e0000e4630100968600003084000046800000cc870000dc8e000036bd0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
