@@ -5,15 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Menu.unity
-    guid: 8d028e0b8a95241429903a9137b4fc8b
-  - enabled: 0
-    path: Assets/Scenes/Rain.unity
-    guid: bece12bbd10550945966a08923a6a46c
-  - enabled: 0
-    path: Assets/Will/MapStuff/WillTest 1.unity
-    guid: a0ce1d98fd08e31449e27404938a3600
   - enabled: 1
     path: Assets/Justin/Scene/MultiplayerTest.unity
     guid: 1be29afdd487fc747a5350e8600debf8

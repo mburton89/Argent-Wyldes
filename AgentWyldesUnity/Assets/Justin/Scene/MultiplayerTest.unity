@@ -3954,7 +3954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!143 &7635310694842252208
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4151,7 +4151,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 18.503416, y: 1}
+    m_SensorSize: {x: 2.109183, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
