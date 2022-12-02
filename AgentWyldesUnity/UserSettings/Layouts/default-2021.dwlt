@@ -102,7 +102,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 19
+  controlID: 82
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 18
+  controlID: 624
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: LightingWindow
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -247,14 +247,14 @@ MonoBehaviour:
     y: 0
     width: 505
     height: 1347
-  m_MinSize: {x: 391, y: 411}
+  m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -632,9 +632,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 764.35614, y: 449.7444, z: 301.34613}
+    m_Target: {x: 70.78786, y: 512.1463, z: 457.83264}
     speed: 2
-    m_Value: {x: 764.35614, y: 449.7444, z: 301.34613}
+    m_Value: {x: 70.78786, y: 512.1463, z: 457.83264}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -681,13 +681,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.033261556, y: -0.28088388, z: -0.00026855414, w: -0.9603212}
+    m_Target: {x: -0.044140883, y: 0.8343471, z: -0.082589805, w: -0.54533744}
     speed: 2
-    m_Value: {x: -0.031786293, y: -0.28057203, z: -0.00069083524, w: -0.95930624}
+    m_Value: {x: -0.043275774, y: 0.8335133, z: -0.08124321, w: -0.54477733}
   m_Size:
-    m_Target: 43.635532
+    m_Target: 54.37781
     speed: 2
-    m_Value: 43.635532
+    m_Value: 54.37781
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -830,10 +830,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 0629fcff6adbffff30fbffff32fbffff4074000096750000a0750000
+      scrollPos: {x: 0, y: 96}
+      m_SelectedIDs: ca740000
+      m_LastClickedID: 29898
+      m_ExpandedIDs: 72f9feff32fbffff92750000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -899,22 +899,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Patricia/FBX
+    - Assets/Will/FBX
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Patricia/FBX
+  - Assets/Will/FBX
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\ederw\OneDrive\Documents\Argent-Wyldes\AgentWyldesUnity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 183}
-    m_SelectedIDs: 62920000
-    m_LastClickedID: 37474
-    m_ExpandedIDs: 000000000a8a00000c8a00000e8a0000108a0000128a0000148a0000168a0000188a00001c8a00001e8a0000548c00006292000000ca9a3b
+    scrollPos: {x: 0, y: 387}
+    m_SelectedIDs: 14070100
+    m_LastClickedID: 67348
+    m_ExpandedIDs: 00000000288a00002a8a00002c8a00002e8a0000308a0000328a0000348a0000368a0000388a00003a8a00003c8a00003e8a0000d48c0000ea8c00009e06010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -942,7 +942,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000a8a00000c8a00000e8a0000108a0000128a0000148a0000168a0000188a00001a8a00001c8a00001e8a0000
+    m_ExpandedIDs: 00000000288a00002a8a00002c8a00002e8a0000308a0000328a0000348a0000368a0000388a00003a8a00003c8a00003e8a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
