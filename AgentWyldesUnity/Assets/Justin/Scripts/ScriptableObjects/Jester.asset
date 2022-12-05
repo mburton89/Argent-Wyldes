@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd172c0b4723d224ead9a9bf7a461421, type: 3}
-  m_Name: Character1
+  m_Name: Jester
   m_EditorClassIdentifier: 
-  _characterName: Character 1
-  _characterPreviewPrefab: {fileID: -3915082565821610680, guid: 46b7ed08ef588c94691b0e19e5c89f25,
+  _characterName: Jester
+  _characterPreviewPrefab: {fileID: 2369847432264909657, guid: beb944116209b4f45aefee1c8c296ffd,
     type: 3}
-  _characterGameplayPrefab: {fileID: 5616827123165563017, guid: 578c3d28ecd8cdc438bd34d08bbfe381,
+  _characterGameplayPrefab: {fileID: 8229081792921671539, guid: 2b7a54bd09722e041afbe3309c15e1fa,
     type: 3}

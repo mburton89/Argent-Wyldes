@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd172c0b4723d224ead9a9bf7a461421, type: 3}
-  m_Name: Character3
+  m_Name: Goth
   m_EditorClassIdentifier: 
   _characterName: Goth
   _characterPreviewPrefab: {fileID: 2333204968815555437, guid: 232b82aa227960045a04287a1df026c1,
