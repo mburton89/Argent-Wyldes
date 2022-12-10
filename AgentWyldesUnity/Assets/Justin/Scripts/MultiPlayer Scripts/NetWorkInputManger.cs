@@ -8,12 +8,17 @@ public class NetWorkInputManger : NetworkBehaviour
 {
 
 
+    [SerializeField]
+    CanAttackIsLeshen canAttackIsLeshen;
 
+    [SerializeField]
+    Character character;
     [SerializeField]
     NetworkMovement movement;
     [SerializeField]
     NetworkMouseLook mouseLook;
     public bool Jump_Input;
+    public bool Attack_Input;
 
 
     PlayerControls controls;
@@ -38,7 +43,11 @@ public class NetWorkInputManger : NetworkBehaviour
         groundMovement.Sprint.canceled += _ => movement.sprint = false;
         groundMovement.MouseX.performed += ctx => mounseInput.x = ctx.ReadValue<float>();
         groundMovement.MouseY.performed += ctx => mounseInput.y = ctx.ReadValue<float>();
-
+        if (canAttackIsLeshen != null)
+        {
+            groundMovement.Attack.performed += _ => Attack_Input = true;
+        }  
+      
     }
 
 
@@ -65,6 +74,7 @@ public class NetWorkInputManger : NetworkBehaviour
         {
             return;
         }
+        HandleAttackInput();
         HandleJumpingInput();
         movement.ReceieveInput(horizontalInput);
         mouseLook.ReceieveInput(mounseInput);
@@ -85,6 +95,15 @@ public class NetWorkInputManger : NetworkBehaviour
 
 
 
+    }
+    private void HandleAttackInput()
+    {
+
+        if (Attack_Input)
+        {
+            Attack_Input = false;
+            movement.HandleAtack();
+        }
     }
 
 }

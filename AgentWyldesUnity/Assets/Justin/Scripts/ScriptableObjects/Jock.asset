@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd172c0b4723d224ead9a9bf7a461421, type: 3}
   m_Name: Jock
   m_EditorClassIdentifier: 
-  _characterName: Character 1
+  _characterName: Jock
   _characterPreviewPrefab: {fileID: -3915082565821610680, guid: 46b7ed08ef588c94691b0e19e5c89f25,
     type: 3}
   _characterGameplayPrefab: {fileID: 5616827123165563017, guid: 578c3d28ecd8cdc438bd34d08bbfe381,

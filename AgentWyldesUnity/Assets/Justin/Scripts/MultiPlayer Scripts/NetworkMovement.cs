@@ -35,15 +35,21 @@ public class NetworkMovement : NetworkBehaviour
     private InputAction jumpaction;
     private InputAction crouchaction;
     private InputAction sprintaction;
+    private InputAction attackAction;
+    public CanAttackIsLeshen canAttackIsLeshen;
+
+
     int moveZParameterId;
     int jumpAnimation;
     int crouchAnimation;
     int sprintAnimation;
+    int AttackAnimation;
     bool jump;
-   public bool sprint;
+    public bool sprint;
     public bool crouch;
     bool isgrounded;
     bool isJumping;
+    bool isAttacking;
     Vector2 currentAnimationnBlendVector;
     Vector2 animationVelocity;
     Vector3 verticalVelocity = Vector3.zero;
@@ -63,6 +69,7 @@ public class NetworkMovement : NetworkBehaviour
     }
     private void Awake()
     {
+
         animator = GetComponent<Animator>();
         inputManager = GetComponent<NetWorkInputManger>();
         jumpAnimation = Animator.StringToHash("Jump");
@@ -89,6 +96,12 @@ public class NetworkMovement : NetworkBehaviour
         jumpParameter1 = Animator.StringToHash("isJumping1");
 
         moveZParameterId = Animator.StringToHash("MoveZ");
+        if (canAttackIsLeshen != null)
+        {
+            attackAction = playerInput.actions["Attack"];
+            AttackAnimation = Animator.StringToHash("isAttacking");
+
+        }
     }
     private void Update()
     {
@@ -98,6 +111,10 @@ public class NetworkMovement : NetworkBehaviour
             return;
         }
         if (isJumping)
+        {
+            return;
+        }
+        if (isAttacking)
         {
             return;
         }
@@ -171,6 +188,10 @@ public class NetworkMovement : NetworkBehaviour
 
 
         //}
+        //if (attack)
+        //{
+
+        //}
 
         if (crouch)
         {
@@ -214,7 +235,27 @@ public class NetworkMovement : NetworkBehaviour
 
         horizontalInput = _horizontalInput;
     }
-
+    public void HandleAtack()
+    {
+        isAttacking = inputManager.Attack_Input;
+        if (attackAction.triggered && isgrounded)
+        {
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            {
+                animator.SetTrigger(AttackAnimation);
+                //print("hi attack");
+            }
+        }
+        else
+        {
+            animator.ResetTrigger(AttackAnimation);
+        }
+        if (inputManager.Attack_Input)
+        {
+            return;
+        }
+        inputManager.Attack_Input = false;
+    }
 
     public void HandleJump()
     {
