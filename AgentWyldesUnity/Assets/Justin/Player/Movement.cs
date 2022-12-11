@@ -20,7 +20,6 @@ public class Movement : MonoBehaviour
     [SerializeField] float animationSmoothTime = 0.1f;
 
     private Animator animator;
-
     int moveXParameterId;
     private int jumpParameter;
     private InputAction moveaction;
@@ -58,6 +57,7 @@ public class Movement : MonoBehaviour
         jumpParameter1 = Animator.StringToHash("isJumping1");
 
         moveZParameterId = Animator.StringToHash("MoveZ");
+        
     }
     private void Update()
     {

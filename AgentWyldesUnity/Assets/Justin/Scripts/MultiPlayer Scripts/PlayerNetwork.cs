@@ -18,8 +18,29 @@ public class PlayerNetwork : NetworkBehaviour
     [SerializeField] float animationSmoothTime = 0.1f;
     PlayerControls controls;
     PlayerControls.GroundMovementActions groundMovement;
+    private NetworkVariable<int> randomNuumber = new NetworkVariable<int>(1,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Owner);
+    public struct mycustomData//testing things
+    {
+        public int _int;
+        public bool _bool;
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        randomNuumber.OnValueChanged += (int previousValue, int newValue) =>
+        {
+            Debug.Log(OwnerClientId + "; randomNumber: " + randomNuumber.Value);
+        };
+    }
+
+
+
     private void Awake()
     {
+
+
+
+
         //rigidbodyy = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
@@ -33,6 +54,7 @@ public class PlayerNetwork : NetworkBehaviour
 
     private void Movement_performed(InputAction.CallbackContext obj)
     {
+          //randomNuumber.Value = Random.Range(0,100);
         horizontalInput = moveaction.ReadValue<Vector2>();
         currentAnimationnBlendVector = Vector2.SmoothDamp(currentAnimationnBlendVector, horizontalInput, ref animationVelocity, animationSmoothTime);
         Vector3 horizontalVelocity = new Vector3(currentAnimationnBlendVector.x, 0, currentAnimationnBlendVector.y);
@@ -53,7 +75,10 @@ public class PlayerNetwork : NetworkBehaviour
         {
             return;
         }
-
+        if (moveaction.triggered)
+        {
+            randomNuumber.Value = Random.Range(0, 100);
+        }
 
         groundMovement.HorizontalMovement.ReadValue<Vector2>();
         horizontalInput = moveaction.ReadValue<Vector2>();
