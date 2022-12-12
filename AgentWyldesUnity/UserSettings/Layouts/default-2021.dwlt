@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 350}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 130
+  controlID: 83
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 19
+  controlID: 84
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -381,9 +381,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: da07ffff8e0bffff38faffffe4250100
+      m_SelectedIDs: 70d10200
+      m_LastClickedID: 184688
+      m_ExpandedIDs: de04feffecfdfeffbc09ffff0cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -399,7 +399,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 6}
+        m_ClientGUIView: {fileID: 10}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -644,9 +644,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 818.59894, y: 387.1833, z: 240.00818}
+    m_Target: {x: 914.5511, y: 493.068, z: 528.00916}
     speed: 2
-    m_Value: {x: 818.59894, y: 387.1833, z: 240.00818}
+    m_Value: {x: 914.5511, y: 493.068, z: 528.00916}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -693,13 +693,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.012898074, y: 0.004719932, z: -0.000026488124, w: 1.0000193}
+    m_Target: {x: -0.06480571, y: -0.7273054, z: 0.06261819, w: -0.6839919}
     speed: 2
-    m_Value: {x: 0.0128966095, y: 0.004719396, z: -0.000026485115, w: 0.9999057}
+    m_Value: {x: -0.06464627, y: -0.72551596, z: 0.062464125, w: -0.68230903}
   m_Size:
-    m_Target: 585.611
+    m_Target: 15.057396
     speed: 2
-    m_Value: 585.611
+    m_Value: 15.057396
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -795,22 +795,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Will/MapStuff
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Will/MapStuff
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\WUStudent\Documents\GitHub\Argent-Wyldes\AgentWyldesUnity
+  m_LastProjectPath: C:\Users\wustudent\Documents\GitHub\Argent-Wyldes\AgentWyldesUnity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 68220100
-    m_LastClickedID: 74344
-    m_ExpandedIDs: 000000003422010000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 118}
+    m_SelectedIDs: a2fe0000
+    m_LastClickedID: 65186
+    m_ExpandedIDs: 0000000062fc000064fc00007cfe000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -838,7 +838,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000034220100
+    m_ExpandedIDs: 0000000062fc000064fc0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000dabe0000329e0000e4630100968600003084000046800000cc870000dc8e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
