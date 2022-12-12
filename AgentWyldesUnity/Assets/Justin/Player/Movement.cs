@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     [SerializeField] LayerMask groundmask;
     [SerializeField] float jumpheight = 3.5f;
     [SerializeField] float animationSmoothTime = 0.1f;
+    [SerializeField] float sprintspeed = 20f;
 
     private Animator animator;
     int moveXParameterId;
@@ -31,7 +32,10 @@ public class Movement : MonoBehaviour
     bool jump;
     public bool crouch;
     bool isgrounded;
+    int sprintAnimation;
+    public bool sprint;
     bool isJumping;
+    private InputAction sprintaction; 
     Vector2 currentAnimationnBlendVector;
     Vector2 animationVelocity;
     Vector3 verticalVelocity = Vector3.zero;
@@ -46,12 +50,12 @@ public class Movement : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         jumpAnimation = Animator.StringToHash("Jump");
         crouchAnimation = Animator.StringToHash("Jump");
-
+        sprintaction = playerInput.actions["Sprint"];
         moveaction = playerInput.actions["Horizontal Movement"];
         jumpaction = playerInput.actions["Jump"];
         crouchaction = playerInput.actions["Crouch"];
-
-
+        sprintAnimation = Animator.StringToHash("isSprinting");
+        //sprintaction = playerInput.actions["Sprint"];
         moveXParameterId = Animator.StringToHash("MoveX");
         jumpParameter = Animator.StringToHash("isJumping");
         jumpParameter1 = Animator.StringToHash("isJumping1");
@@ -85,10 +89,34 @@ public class Movement : MonoBehaviour
 
         currentAnimationnBlendVector = Vector2.SmoothDamp(currentAnimationnBlendVector, horizontalInput, ref animationVelocity, animationSmoothTime);
 
+        //Vector3 horizontalVelocity = new Vector3(currentAnimationnBlendVector.x, 0, currentAnimationnBlendVector.y);
+        ////if (crouch)
+        //{
+        //    horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * crouchspeed;
+        //}
+        //else
+        //{
+        //    horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * speed;
+
+        //}
+        //if (isJumping)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    controller.Move(horizontalVelocity * Time.deltaTime);
+        //    animator.SetFloat(moveXParameterId, currentAnimationnBlendVector.x);
+        //    animator.SetFloat(moveZParameterId, currentAnimationnBlendVector.y);
+        //}
         Vector3 horizontalVelocity = new Vector3(currentAnimationnBlendVector.x, 0, currentAnimationnBlendVector.y);
-        if (crouch)
+        if (crouch && !sprint)
         {
             horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * crouchspeed;
+        }
+        else if (!crouch && sprint)
+        {
+            horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * sprintspeed;
         }
         else
         {
@@ -105,13 +133,13 @@ public class Movement : MonoBehaviour
             animator.SetFloat(moveXParameterId, currentAnimationnBlendVector.x);
             animator.SetFloat(moveZParameterId, currentAnimationnBlendVector.y);
         }
-       
+
 
         //jump height equation: v = sqrt(-2 * jumpheight * gravity
         //if (jump)
         //{
         //   //isJumping = animator.GetBool(jumpParameter);
-            
+
         //    if (isgrounded && jumpaction.triggered)
         //    {
         //        //animator.CrossFade(jumpAnimation, animationPlayTransition);
@@ -148,7 +176,20 @@ public class Movement : MonoBehaviour
             crouch = false;
             print("crouch is false");
         }
+        if (sprint)
+        {
+            if (isgrounded)
+            {
+                animator.SetBool(sprintAnimation, true);
 
+            }
+        }
+        else
+        {
+            animator.SetBool(sprintAnimation, false);
+            sprint = false;
+
+        }
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
         print(isgrounded);
@@ -214,6 +255,10 @@ public class Movement : MonoBehaviour
     public void OnCrouch()
     {
         crouch = true;
+    }
+    public void OnSprint()
+    {
+        sprint = true;
     }
 
 

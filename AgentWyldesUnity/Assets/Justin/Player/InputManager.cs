@@ -37,7 +37,8 @@ public class InputManager : MonoBehaviour
         groundMovement.Interact.performed += _ => openDoorTrigger.UseDoor();
         groundMovement.MouseX.performed += ctx => mounseInput.x = ctx.ReadValue<float>();
         groundMovement.MouseY.performed += ctx => mounseInput.y = ctx.ReadValue<float>();
-
+        groundMovement.Sprint.performed += _ => movement.OnSprint();
+        groundMovement.Sprint.canceled += _ => movement.sprint = false;
     }
 
 
@@ -52,6 +53,8 @@ public class InputManager : MonoBehaviour
         controls.Disable();
         groundMovement.Crouch.performed -= _ => movement.OnCrouch();
        groundMovement.Crouch.canceled -= _ => movement.crouch = false;
+        groundMovement.Sprint.performed -= _ => movement.OnSprint();
+        groundMovement.Sprint.canceled -= _ => movement.sprint = false;
 
 
     }
