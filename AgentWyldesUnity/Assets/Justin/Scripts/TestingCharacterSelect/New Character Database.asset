@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e36aaaeb51532d49869466ea0863b2d, type: 3}
+  m_Name: New Character Database
+  m_EditorClassIdentifier: 
+  characterTests:
+  - CharacterName: Jock
+    _characterPreviewPrefab: {fileID: 9069496844382650057, guid: 37ac610d9259b974294b82ffe15eee06,
+      type: 3}
+    _characterGameplayPrefab: {fileID: 5616827123165563017, guid: 5e0d49a048c365941903345dde35597f,
+      type: 3}
+  - CharacterName: Goth
+    _characterPreviewPrefab: {fileID: 2333204968815555437, guid: 232b82aa227960045a04287a1df026c1,
+      type: 3}
+    _characterGameplayPrefab: {fileID: 0}
+  - CharacterName: CheerLeader
+    _characterPreviewPrefab: {fileID: 4882511560824993906, guid: 6c105e4c6236126458ae98e669eab032,
+      type: 3}
+    _characterGameplayPrefab: {fileID: 1855126948637202812, guid: b72b80b149a46c14cafc6bd7b34ae50a,
+      type: 3}
+  - CharacterName: Cheerleader
+    _characterPreviewPrefab: {fileID: 4882511560824993906, guid: 6c105e4c6236126458ae98e669eab032,
+      type: 3}
+    _characterGameplayPrefab: {fileID: 1855126948637202812, guid: b72b80b149a46c14cafc6bd7b34ae50a,
+      type: 3}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class Movement : MonoBehaviour
 {
@@ -14,11 +15,14 @@ public class Movement : MonoBehaviour
     [SerializeField] PlayerInput playerInput;
     [SerializeField] float speed = 11f;
     [SerializeField] float crouchspeed = 1.1f;
+    [SerializeField] float sprintspeed = 20f;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] LayerMask groundmask;
     [SerializeField] float jumpheight = 3.5f;
     [SerializeField] float animationSmoothTime = 0.1f;
-    [SerializeField] float sprintspeed = 20f;
+    [SerializeField] Transform followTarget;
+    private CinemachineVirtualCamera _cinemachineVirtualCamera;
+
 
     private Animator animator;
     int moveXParameterId;
@@ -43,13 +47,28 @@ public class Movement : MonoBehaviour
     private float animationPlayTransition = 0.15f;
     private int jumpParameter1;
 
-    private void Awake()
+    private void awake()
+    {
+
+        //if (_mainCamera == null)
+        //{
+        //    _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        //}
+        if (_cinemachineVirtualCamera == null)
+        {
+            _cinemachineVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        }
+        _cinemachineVirtualCamera.Follow = followTarget;
+      
+        
+    }
+    private void Start()
     {
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         inputManager = GetComponent<InputManager>();
         jumpAnimation = Animator.StringToHash("Jump");
-        crouchAnimation = Animator.StringToHash("Jump");
+        crouchAnimation = Animator.StringToHash("Crouch");
         sprintaction = playerInput.actions["Sprint"];
         moveaction = playerInput.actions["Horizontal Movement"];
         jumpaction = playerInput.actions["Jump"];
@@ -61,7 +80,6 @@ public class Movement : MonoBehaviour
         jumpParameter1 = Animator.StringToHash("isJumping1");
 
         moveZParameterId = Animator.StringToHash("MoveZ");
-        
     }
     private void Update()
     {

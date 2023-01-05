@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
     Movement movement;
     [SerializeField]
     MouseLook mouseLook;
-    public OpenDoorTrigger openDoorTrigger;
+    //public OpenDoorTrigger openDoorTrigger;
     public bool Jump_Input;
 
 
@@ -34,7 +34,7 @@ public class InputManager : MonoBehaviour
         groundMovement.Crouch.performed += _ => movement.OnCrouch();
         groundMovement.Crouch.canceled += _ => movement.crouch = false;
         groundMovement.Jump.performed += _ => Jump_Input = true;
-        groundMovement.Interact.performed += _ => openDoorTrigger.UseDoor();
+        //groundMovement.Interact.performed += _ => openDoorTrigger.UseDoor();
         groundMovement.MouseX.performed += ctx => mounseInput.x = ctx.ReadValue<float>();
         groundMovement.MouseY.performed += ctx => mounseInput.y = ctx.ReadValue<float>();
         groundMovement.Sprint.performed += _ => movement.OnSprint();

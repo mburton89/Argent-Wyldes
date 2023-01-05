@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -701,12 +701,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170852028}
   m_CullTransparentMesh: 1
---- !u!1 &260220710 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2369847432264909657, guid: beb944116209b4f45aefee1c8c296ffd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8935904577737552717}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &291148560
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,14 +822,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d4824a36029ab49b504bc1d04e8530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerModels:
-  - {fileID: 1085227749159392362}
-  - {fileID: 1348902660}
-  - {fileID: 344543581}
-  - {fileID: 662972556}
-  - {fileID: 304378682}
-  - {fileID: 260220710}
-  - {fileID: 475339500}
+  Characters:
+  - {fileID: 11400000, guid: ffe5a3bff4036d6488c81bda9189dda4, type: 2}
+  - {fileID: 11400000, guid: e72781d095475eb4aadda27bfac4f9a8, type: 2}
+  - {fileID: 11400000, guid: b58106a9d8b2684449282c29bbe57b58, type: 2}
+  - {fileID: 11400000, guid: b58106a9d8b2684449282c29bbe57b58, type: 2}
+  playerModels: []
   playerText: {fileID: 83586853}
   playerTextOutline: {fileID: 129873665}
   monsterButton: {fileID: 1867490646}
@@ -854,12 +846,6 @@ MonoBehaviour:
   - {fileID: 1881400322}
   - {fileID: 1294864569}
   - {fileID: 627982054}
---- !u!1 &304378682 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6698435487848134092, guid: 3b706959080d5e845b9b4a8976d24bb9,
-    type: 3}
-  m_PrefabInstance: {fileID: 926054352972714342}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &319946776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,12 +1020,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &344543581 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2333204968815555437, guid: 232b82aa227960045a04287a1df026c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 4464673024237026304}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &386387092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,12 +1472,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1 &475339500 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3536248842174337477, guid: 5315113d55a5a1c428949c7b3a79a624,
-    type: 3}
-  m_PrefabInstance: {fileID: 5704177991699907429}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &534385833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,12 +1988,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637970320}
   m_CullTransparentMesh: 1
---- !u!1 &662972556 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4882511560824993906, guid: 6c105e4c6236126458ae98e669eab032,
-    type: 3}
-  m_PrefabInstance: {fileID: 1616011351895764976}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &664913848
 GameObject:
   m_ObjectHideFlags: 0
@@ -3381,12 +3349,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294864569}
   m_CullTransparentMesh: 1
---- !u!1 &1348902660 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 637451275480584392, guid: d27bd9dcd0bbde74e8e73aa4ebf5dc0d,
-    type: 3}
-  m_PrefabInstance: {fileID: 9064942767053348812}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1452440237
 GameObject:
   m_ObjectHideFlags: 0

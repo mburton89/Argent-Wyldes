@@ -331,9 +331,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5203c2da51ad9645a734ad4195454a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAttackIsLeshen: {fileID: 0}
+  character: {fileID: 0}
   movement: {fileID: 5828197564813858015}
   mouseLook: {fileID: 8917443495636093055}
   Jump_Input: 0
+  Attack_Input: 0
   horizontalInput: {x: 0, y: 0}
 --- !u!114 &8917443495636093055
 MonoBehaviour:
@@ -377,6 +380,7 @@ MonoBehaviour:
   jumpheight: 3.5
   animationSmoothTime: 0.1
   followTarget: {fileID: 1855126949983406188}
+  canAttackIsLeshen: {fileID: 0}
   sprint: 0
   crouch: 0
 --- !u!114 &2938631522901715610
