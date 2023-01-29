@@ -855,10 +855,11 @@ MonoBehaviour:
   monsterButton: {fileID: 1867490646}
   jockButton: {fileID: 1066279019}
   gothButton: {fileID: 1029730955}
-  nerdButton: {fileID: 1081200087}
-  jesterButton: {fileID: 100011114}
-  funGuyButton: {fileID: 442700279}
-  partyGuyButton: {fileID: 1509196571}
+  cheerleaderButton: {fileID: 1081200087}
+  funGuyButton: {fileID: 100011114}
+  jesterButton: {fileID: 442700279}
+  nerdButton: {fileID: 1509196571}
+  partyGuyButton: {fileID: 100011114}
   playButton: {fileID: 1927972359}
   buttonOutlines:
   - {fileID: 1196043573}

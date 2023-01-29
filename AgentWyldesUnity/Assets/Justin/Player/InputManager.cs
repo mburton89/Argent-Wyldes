@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
     MouseLook mouseLook;
     //public OpenDoorTrigger openDoorTrigger;
     public bool Jump_Input;
-
+    public bool Interact_Input;
 
     PlayerControls controls;
     PlayerControls.GroundMovementActions groundMovement;
@@ -52,7 +52,7 @@ public class InputManager : MonoBehaviour
         groundMovement.MouseY.performed += ctx => mounseInput.y = ctx.ReadValue<float>();
         groundMovement.Sprint.performed += _ => movement.OnSprint();
         groundMovement.Sprint.canceled += _ => movement.sprint = false;
-
+        groundMovement.Interact.performed += _ => Interact_Input = true;
     }
 
 
@@ -76,6 +76,7 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         HandleJumpingInput();
+        HandleInteractionInput();
         movement.ReceieveInput(horizontalInput);
         mouseLook.ReceieveInput(mounseInput);
     }
@@ -94,6 +95,17 @@ public class InputManager : MonoBehaviour
 
 
 
+
+    }
+    private void HandleInteractionInput()
+    {
+        if (Interact_Input)
+        {
+            if (!movement.canInteract)
+            {
+                Interact_Input = false;
+            }
+        }
 
     }
 

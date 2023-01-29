@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] CharacterController controller;
     [SerializeField] PlayerControls inputActions;
-    [SerializeField] InputManager inputManager;
+   public InputManager inputManager;
     [SerializeField] PlayerInput playerInput;
     [SerializeField] float speed = 11f;
     [SerializeField] float crouchspeed = 1.1f;
@@ -46,7 +46,7 @@ public class Movement : MonoBehaviour
     Vector2 horizontalInput;
     private float animationPlayTransition = 0.15f;
     private int jumpParameter1;
-
+    public bool canInteract;
     private void awake()
     {
 

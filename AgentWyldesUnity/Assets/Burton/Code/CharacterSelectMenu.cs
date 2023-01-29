@@ -20,9 +20,11 @@ public class CharacterSelectMenu : MonoBehaviour
     [SerializeField] Button monsterButton;
     [SerializeField] Button jockButton;
     [SerializeField] Button gothButton;
-    [SerializeField] Button nerdButton;
-    [SerializeField] Button jesterButton;
+    [SerializeField] Button cheerleaderButton;
     [SerializeField] Button funGuyButton;
+    [SerializeField] Button jesterButton;
+
+    [SerializeField] Button nerdButton;
     [SerializeField] Button partyGuyButton;
     [SerializeField] Button playButton;
 
@@ -51,10 +53,10 @@ public class CharacterSelectMenu : MonoBehaviour
         //monsterButton.onClick.AddListener(delegate { HandlePlayerSelected(0); });
         jockButton.onClick.AddListener(delegate { HandlePlayerSelected(1); });
         gothButton.onClick.AddListener(delegate { HandlePlayerSelected(2); });
-        nerdButton.onClick.AddListener(delegate { HandlePlayerSelected(3); });
-        jesterButton.onClick.AddListener(delegate { HandlePlayerSelected(4); });
-        funGuyButton.onClick.AddListener(delegate { HandlePlayerSelected(5); });
-        partyGuyButton.onClick.AddListener(delegate { HandlePlayerSelected(6); });
+        cheerleaderButton.onClick.AddListener(delegate { HandlePlayerSelected(3); });
+        partyGuyButton.onClick.AddListener(delegate { HandlePlayerSelected(4); });
+        jesterButton.onClick.AddListener(delegate { HandlePlayerSelected(5); });
+        nerdButton.onClick.AddListener(delegate { HandlePlayerSelected(6); });
         playButton.onClick.AddListener(HandlePlayPressed);
     }
 
