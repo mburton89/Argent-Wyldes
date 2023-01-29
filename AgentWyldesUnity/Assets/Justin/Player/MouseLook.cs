@@ -15,7 +15,7 @@ public class MouseLook : MonoBehaviour
     float mouseY;
     float xRotation = 0;
 
-    
+
 
 
     private void Update()

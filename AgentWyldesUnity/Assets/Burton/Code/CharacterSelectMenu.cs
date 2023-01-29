@@ -35,20 +35,20 @@ public class CharacterSelectMenu : MonoBehaviour
 
     private void Start()
     {
-        foreach (var character in Characters)
-        {
-            GameObject characterInstance = Instantiate(character.CharacterPreviewfab); //creates the preview prefab under the preview parent transform
-                                                                                       //NetworkObject NetworkcharacterInstance = characterInstance.GetComponent<NetworkObject>();
-                                                                                       //NetworkcharacterInstance.SpawnWithOwnership(OwnerClientId);
-            characterInstance.SetActive(false); //tu;rns off whichever characterInstance isnt being viewed
-            playerModels.Add(characterInstance); //adds to the the list of which to spawn
-        }
+        //foreach (var character in Characters)
+        //{
+        //    GameObject characterInstance = Instantiate(character.CharacterPreviewfab); //creates the preview prefab under the preview parent transform
+        //                                                                               //NetworkObject NetworkcharacterInstance = characterInstance.GetComponent<NetworkObject>();
+        //                                                                               //NetworkcharacterInstance.SpawnWithOwnership(OwnerClientId);
+        //    characterInstance.SetActive(false); //tu;rns off whichever characterInstance isnt being viewed
+        //    playerModels.Add(characterInstance); //adds to the the list of which to spawn
+        //}
         currentPlayerModelIndex = 2; //Goth
     }
 
     private void OnEnable()
     {
-        monsterButton.onClick.AddListener(delegate { HandlePlayerSelected(0); });
+        //monsterButton.onClick.AddListener(delegate { HandlePlayerSelected(0); });
         jockButton.onClick.AddListener(delegate { HandlePlayerSelected(1); });
         gothButton.onClick.AddListener(delegate { HandlePlayerSelected(2); });
         nerdButton.onClick.AddListener(delegate { HandlePlayerSelected(3); });
@@ -58,8 +58,35 @@ public class CharacterSelectMenu : MonoBehaviour
         playButton.onClick.AddListener(HandlePlayPressed);
     }
 
+    void HandlePlayerSelected(int index)
+    {
+        playerModels[currentPlayerModelIndex].transform.localScale = Vector3.zero;
+        buttonOutlines[currentPlayerModelIndex].SetActive(false);
+
+        PlayerPrefs.SetInt("currentPlayerIndex", index);
+
+        playerModels[PlayerPrefs.GetInt("currentPlayerIndex")].transform.localScale = Vector3.one;
+
+        currentPlayerModelIndex = PlayerPrefs.GetInt("currentPlayerIndex");
+        buttonOutlines[currentPlayerModelIndex].SetActive(true);
+
+        playerText.SetText(playerModels[PlayerPrefs.GetInt("currentPlayerIndex")].gameObject.name);
+        playerTextOutline.SetText(playerModels[PlayerPrefs.GetInt("currentPlayerIndex")].gameObject.name);
+
+        SoundManager.Instance.buttonClick.Play();
+    }
+
+
+
+
+
     //void HandlePlayerSelected(int index)
     //{
+
+        
+
+
+
     //    playerModels[currentPlayerModelIndex].transform.localScale = Vector3.zero;
     //    buttonOutlines[currentPlayerModelIndex].SetActive(false);
 
@@ -75,33 +102,6 @@ public class CharacterSelectMenu : MonoBehaviour
 
     //    SoundManager.Instance.buttonClick.Play();
     //}
-
-
-
-
-
-    void HandlePlayerSelected(int index)
-    {
-
-        
-
-
-
-        playerModels[currentPlayerModelIndex].transform.localScale = Vector3.zero;
-        buttonOutlines[currentPlayerModelIndex].SetActive(false);
-
-        PlayerPrefs.SetInt("currentPlayerIndex", index);
-
-        playerModels[PlayerPrefs.GetInt("currentPlayerIndex")].transform.localScale = Vector3.one;
-
-        currentPlayerModelIndex = PlayerPrefs.GetInt("currentPlayerIndex");
-        buttonOutlines[currentPlayerModelIndex].SetActive(true);
-
-        //playerText.SetText(playerModels[PlayerPrefs.GetInt("currentPlayerIndex")].gameObject.name);
-        //playerTextOutline.SetText(playerModels[PlayerPrefs.GetInt("currentPlayerIndex")].gameObject.name);
-
-        SoundManager.Instance.buttonClick.Play();
-    }
 
     void HandlePlayPressed()
     {

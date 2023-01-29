@@ -7,7 +7,11 @@ public class InputManager : MonoBehaviour
 {
 
 
-
+    private static InputManager _instance;
+    public static InputManager instance {
+        get { return _instance; }
+            
+            }
     [SerializeField]
     Movement movement;
     [SerializeField]
@@ -20,10 +24,18 @@ public class InputManager : MonoBehaviour
     PlayerControls.GroundMovementActions groundMovement;
 
     public Vector2  horizontalInput;
-    Vector2 mounseInput;
+    public Vector2 mounseInput;
 
     private void Awake()
     {
+        //if (_instance != null && _instance != this)
+        //{
+        //    Destroy(this.gameObject);
+        //}
+        //else
+        //{
+        //    _instance = this;
+        //}
         controls = new PlayerControls();
         groundMovement = controls.GroundMovement;
 
@@ -31,6 +43,7 @@ public class InputManager : MonoBehaviour
         //ctx is the value so if something is a button it doesnt need context since their is no value to read
         //these are event lambadas if they cause problems switch later
         groundMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
+        //groundMovement.HorizontalMovement.performed += ctx => mounseInput = ctx.ReadValue<Vector2>();
         groundMovement.Crouch.performed += _ => movement.OnCrouch();
         groundMovement.Crouch.canceled += _ => movement.crouch = false;
         groundMovement.Jump.performed += _ => Jump_Input = true;
@@ -39,6 +52,7 @@ public class InputManager : MonoBehaviour
         groundMovement.MouseY.performed += ctx => mounseInput.y = ctx.ReadValue<float>();
         groundMovement.Sprint.performed += _ => movement.OnSprint();
         groundMovement.Sprint.canceled += _ => movement.sprint = false;
+
     }
 
 

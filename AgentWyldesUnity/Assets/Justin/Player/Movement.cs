@@ -66,6 +66,7 @@ public class Movement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+        //inputManager = GetComponent<InputManager>();
         inputManager = GetComponent<InputManager>();
         jumpAnimation = Animator.StringToHash("Jump");
         crouchAnimation = Animator.StringToHash("Crouch");
