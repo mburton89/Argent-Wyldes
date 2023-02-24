@@ -24,6 +24,7 @@ public class PickUpItemInterable : InteractableObject
     {
         base.Interact(player);
         player.playerInventory.itemsInInventory.Add(item);
+        Destroy(gameObject);
        
     }
 
