@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 {
     // Start is called before the first frame update
 
-
+    public Inventory playerInventory;
     [SerializeField] CharacterController controller;
     [SerializeField] PlayerControls inputActions;
    public InputManager inputManager;
@@ -65,6 +65,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        playerInventory = GetComponent<Inventory>();
         playerInput = GetComponent<PlayerInput>();
         //inputManager = GetComponent<InputManager>();
         inputManager = GetComponent<InputManager>();
