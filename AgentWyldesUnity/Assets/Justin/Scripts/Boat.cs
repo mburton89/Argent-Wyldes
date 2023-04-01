@@ -16,6 +16,8 @@ public class Boat : InteractableObject
     private float _speed; // speed of the platforn
     [SerializeField]
     private Transform playerTeleportPoint;
+    [SerializeField]
+    GameObject rowboat;
     private int _targetWayPointIndex; // index of the waypoint that the waypoint is moving towards
 
     private Transform _previousWayPoint;
@@ -29,19 +31,20 @@ public class Boat : InteractableObject
     }
     protected override void OnTriggerEnter(Collider other)
     {
-        if (isMoving)
-        {
-            return;
-        }
+        ////if (isMoving)
+        //{
+        //    interactableCanvas.SetActive(false);
+
+        //}
         base.OnTriggerEnter(other);
 
     }
 
     protected override void OnTriggerStay(Collider other)
     {
-        //if (!isMoving)
+        //if (isMoving)
         //{
-          
+        //    interactableCanvas.SetActive(false);
 
         //}
         base.OnTriggerStay(other);
@@ -49,9 +52,9 @@ public class Boat : InteractableObject
 
     protected override void OnTriggerExit(Collider other)
     {
-        //if (!isMoving) 
+        //if (isMoving)
         //{
-
+        //    return;
         //}
         base.OnTriggerExit(other);
 
@@ -77,36 +80,48 @@ public class Boat : InteractableObject
     private void FixedUpdate()
     {
         Vector3 Playermovement;
-        
+        //SetMoving(!isMoving);
         if (isMoving)  
         {
+            interactableCanvas.SetActive(false);
             _elapsedTime += Time.deltaTime;
             elapsedPercentage = _elapsedTime / _timeToWayPoint; //how much of ground the boat has covered
             elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage); //slows down when approaching the limits 0 and 1
             transform.position = Vector3.Lerp(_previousWayPoint.position, _targetWayPoint.position, elapsedPercentage); // moves to the next waypoint according the percentage of time passed
-            movement.transform.SetParent(transform);
+            movement.transform.SetParent(rowboat.transform);
             //movement.transform.position = playerTeleportPoint.transform.position;
             //movement.transform.position.y = 0;
             Playermovement = playerTeleportPoint.transform.position;
-            Playermovement.y += 0.5f;
+            //Playermovement.y += 0.5f;
             movement.transform.position = Playermovement;
+            movement.controller.enabled= false;
+            movement.animator.SetBool("isSitting", true);
+            movement.mouseLook.xClamp = 0;
 
             if (elapsedPercentage >= 1)
             {
                 TargetNextWaypoint();
                 isMoving= false;
+                movement.transform.SetParent(null);
+                movement.animator.SetBool("isSitting", false);
+                movement.controller.enabled= true;
+                movement.mouseLook.xClamp = 70;
+
+
+
             }
 
             //}
         }
-        else
-        {
-            movement.transform.SetParent(null);
-        }
+        //else
+        //{
+        //}
     }
     private void StartBoatMovemenet()
     {
         isMoving = true;
+       
+        //SetMoving(!isMoving);
         //movement.transform.position = playerTeleportPoint.transform.position;
         //_elapsedTime += Time.deltaTime;
         //float elapsedPercentage = _elapsedTime / _timeToWayPoint; //how much of ground the boat has covered
@@ -133,6 +148,15 @@ public class Boat : InteractableObject
         //CanMove = true;
 
     }
+    private void SetMoving(bool isMoving)
+    {
 
+        this.isMoving = isMoving;
+        movement.controller.enabled = !isMoving;
+        //if (!isMoving)
+        //{
+        //    movement.mouseLook.mo
+        //}
+    }
 
 }
