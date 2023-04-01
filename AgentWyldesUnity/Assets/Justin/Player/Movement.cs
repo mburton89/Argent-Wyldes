@@ -7,9 +7,9 @@ using Cinemachine;
 public class Movement : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public MouseLook mouseLook;
     public Inventory playerInventory;
-    [SerializeField] CharacterController controller;
+    public CharacterController controller;
     [SerializeField] PlayerControls inputActions;
    public InputManager inputManager;
     [SerializeField] PlayerInput playerInput;
@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     private CinemachineVirtualCamera _cinemachineVirtualCamera;
 
 
-    private Animator animator;
+    public Animator animator;
     int moveXParameterId;
     private int jumpParameter;
     private InputAction moveaction;
@@ -64,6 +64,7 @@ public class Movement : MonoBehaviour
     }
     private void Start()
     {
+        mouseLook = GetComponent<MouseLook>();
         animator = GetComponent<Animator>();
         playerInventory = GetComponent<Inventory>();
         playerInput = GetComponent<PlayerInput>();

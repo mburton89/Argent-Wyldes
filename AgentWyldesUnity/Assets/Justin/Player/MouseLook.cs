@@ -10,7 +10,7 @@ public class MouseLook : MonoBehaviour
     [SerializeField] GameObject playerCamera;
     [SerializeField] Transform playerCameraTransform;
 
-    [SerializeField] float xClamp = 85f;
+    public float xClamp = 85f;
     float mouseX;
     float mouseY;
     float xRotation = 0;
