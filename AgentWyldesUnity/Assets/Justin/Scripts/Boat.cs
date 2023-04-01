@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -13,7 +14,8 @@ public class Boat : InteractableObject
     private BoatWayPoints _boatWayPointPath;
     [SerializeField]
     private float _speed; // speed of the platforn
-
+    [SerializeField]
+    private Transform playerTeleportPoint;
     private int _targetWayPointIndex; // index of the waypoint that the waypoint is moving towards
 
     private Transform _previousWayPoint;
@@ -74,14 +76,21 @@ public class Boat : InteractableObject
     }
     private void FixedUpdate()
     {
-
-       
+        Vector3 Playermovement;
+        
         if (isMoving)  
         {
             _elapsedTime += Time.deltaTime;
             elapsedPercentage = _elapsedTime / _timeToWayPoint; //how much of ground the boat has covered
             elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage); //slows down when approaching the limits 0 and 1
             transform.position = Vector3.Lerp(_previousWayPoint.position, _targetWayPoint.position, elapsedPercentage); // moves to the next waypoint according the percentage of time passed
+            movement.transform.SetParent(transform);
+            //movement.transform.position = playerTeleportPoint.transform.position;
+            //movement.transform.position.y = 0;
+            Playermovement = playerTeleportPoint.transform.position;
+            Playermovement.y += 0.5f;
+            movement.transform.position = Playermovement;
+
             if (elapsedPercentage >= 1)
             {
                 TargetNextWaypoint();
@@ -90,10 +99,15 @@ public class Boat : InteractableObject
 
             //}
         }
+        else
+        {
+            movement.transform.SetParent(null);
+        }
     }
     private void StartBoatMovemenet()
     {
         isMoving = true;
+        //movement.transform.position = playerTeleportPoint.transform.position;
         //_elapsedTime += Time.deltaTime;
         //float elapsedPercentage = _elapsedTime / _timeToWayPoint; //how much of ground the boat has covered
         //elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage); //slows down when approaching the limits 0 and 1
