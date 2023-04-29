@@ -21,7 +21,9 @@ public class LoadCharacter : MonoBehaviour
                                                                                        //NetworkcharacterInstance.SpawnWithOwnership(OwnerClientId);
             characterInstance.SetActive(false); //tu;rns off whichever characterInstance isnt being viewed
             characterPrefabs.Add(characterInstance); //adds to the the list of which to spawn
+            
         }
+
     }
     void Start()
     {
@@ -30,6 +32,13 @@ public class LoadCharacter : MonoBehaviour
         GameObject clone = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
         clone.SetActive(true);
         label.text = prefab.name;
+        foreach( GameObject character in characterPrefabs ) 
+        {
+            if (character != clone)
+            {
+                Destroy(character);
+            }
+        }
     }
 
     // Update is called once per frame

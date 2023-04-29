@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform followTarget;
     private CinemachineVirtualCamera _cinemachineVirtualCamera;
 
-
+    public int ritualCollected;
     public Animator animator;
     int moveXParameterId;
     private int jumpParameter;
@@ -86,7 +86,7 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
-
+        ritualCollected = playerInventory.itemsInInventory.Count;
 
         if (isJumping)
         {

@@ -8250,6 +8250,8 @@ GameObject:
   - component: {fileID: 8582609210451849284}
   - component: {fileID: 8582609210451849285}
   - component: {fileID: 8582609210451849286}
+  - component: {fileID: -5050696354384046443}
+  - component: {fileID: -698345497860784868}
   m_Layer: 0
   m_Name: PlayerJock
   m_TagString: Untagged
@@ -8305,6 +8307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641ddd2b02fd33f4f95694fd1e4e1b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseLook: {fileID: 0}
+  playerInventory: {fileID: 0}
   controller: {fileID: 8582609210451849281}
   inputManager: {fileID: 8582609210451849283}
   playerInput: {fileID: 8582609210451849286}
@@ -8318,8 +8322,10 @@ MonoBehaviour:
   jumpheight: 3.5
   animationSmoothTime: 0.1
   followTarget: {fileID: 0}
+  animator: {fileID: 0}
   crouch: 0
   sprint: 0
+  canInteract: 0
 --- !u!114 &8582609210451849283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8335,6 +8341,7 @@ MonoBehaviour:
   movement: {fileID: 8582609210451849282}
   mouseLook: {fileID: 8582609210451849284}
   Jump_Input: 0
+  Interact_Input: 0
   horizontalInput: {x: 0, y: 0}
   mounseInput: {x: 0, y: 0}
 --- !u!114 &8582609210451849284
@@ -8405,6 +8412,31 @@ MonoBehaviour:
   m_DefaultActionMap: GroundMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-5050696354384046443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582609210451849287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3bdfd8e7016014ab4ce37b0d7c50a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-698345497860784868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582609210451849287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce2ec8e4a64c9a48ac6a75808af745a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsInInventory: []
 --- !u!1 &8582609210716366766
 GameObject:
   m_ObjectHideFlags: 0
