@@ -16,6 +16,7 @@ public class LeshenAI : MonoBehaviour
     private void Start()
     {
        movement = FindObjectOfType<Movement>();
+        player = movement.transform;
     }
     private void Update()
     {

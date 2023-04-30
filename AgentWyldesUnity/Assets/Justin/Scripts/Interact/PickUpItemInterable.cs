@@ -5,6 +5,12 @@ using UnityEngine;
 public class PickUpItemInterable : InteractableObject
 {
     [SerializeField] Item item;
+    [SerializeField] GameObject monster;
+
+    private void Start()
+    {
+        
+    }
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
@@ -24,6 +30,11 @@ public class PickUpItemInterable : InteractableObject
     {
         base.Interact(player);
         player.playerInventory.itemsInInventory.Add(item);
+        if(monster.activeInHierarchy == false)
+        {
+            monster.SetActive(true);
+
+        }
         Destroy(gameObject);
        
     }
