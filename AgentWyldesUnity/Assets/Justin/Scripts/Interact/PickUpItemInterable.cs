@@ -6,6 +6,7 @@ public class PickUpItemInterable : InteractableObject
 {
     [SerializeField] Item item;
     [SerializeField] GameObject monster;
+    [SerializeField] Transform spawnPosition;
 
     private void Start()
     {
@@ -32,6 +33,8 @@ public class PickUpItemInterable : InteractableObject
         player.playerInventory.itemsInInventory.Add(item);
         if(monster.activeInHierarchy == false)
         {
+            monster.transform.position = spawnPosition.position;
+
             monster.SetActive(true);
 
         }

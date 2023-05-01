@@ -25,30 +25,30 @@ public class LeshenAI : MonoBehaviour
         if (movement.ritualCollected == 1)
         {
             AI.speed = 1.5f;
-            anim.speed = 0.1f;
+            //anim.speed = .7f;
         }
         if (movement.ritualCollected == 2)
         {
             AI.speed = 1.7f;
-            anim.speed = 0.2f;
+            //anim.speed = .8f;
 
         }
         if (movement.ritualCollected == 3)
         {
             AI.speed = 2.0f;
-            anim.speed = 0.3f;
+            anim.speed = 1f;
 
         }
         if (movement.ritualCollected == 4)
         {
             AI.speed = 2.5f;
-            anim.speed = 0.4f;
+            anim.speed = 1.2f;
 
         }
         if (movement.ritualCollected == 5)
         {
             AI.speed = 3f;
-            anim.speed = 0.5f;
+            anim.speed = 1.4f;
 
         }
 
