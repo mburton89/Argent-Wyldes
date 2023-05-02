@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using UnityEngine.EventSystems;
 
 public class Movement : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float sprintspeed = 20f;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] LayerMask groundmask;
-    [SerializeField] float jumpheight = 3.5f;
+    [SerializeField] float jumpHeight = /*3.5*/1f;
     [SerializeField] float animationSmoothTime = 0.1f;
     [SerializeField] Transform followTarget;
     private CinemachineVirtualCamera _cinemachineVirtualCamera;
@@ -44,6 +45,7 @@ public class Movement : MonoBehaviour
     Vector2 animationVelocity;
     Vector3 verticalVelocity = Vector3.zero;
     Vector2 horizontalInput;
+    Vector3 horizontalVelocity;
     private float animationPlayTransition = 0.15f;
     private int jumpParameter1;
     public bool canInteract;
@@ -130,7 +132,8 @@ public class Movement : MonoBehaviour
         //    animator.SetFloat(moveXParameterId, currentAnimationnBlendVector.x);
         //    animator.SetFloat(moveZParameterId, currentAnimationnBlendVector.y);
         //}
-        Vector3 horizontalVelocity = new Vector3(currentAnimationnBlendVector.x, 0, currentAnimationnBlendVector.y);
+        //Vector3 horizontalVelocity = new Vector3(currentAnimationnBlendVector.x, 0, currentAnimationnBlendVector.y);
+        horizontalVelocity = new Vector3(currentAnimationnBlendVector.x, 0, currentAnimationnBlendVector.y);
         if (crouch && !sprint)
         {
             horizontalVelocity = (transform.right.normalized * horizontalVelocity.x + transform.forward.normalized * horizontalVelocity.z) * crouchspeed;
@@ -159,7 +162,7 @@ public class Movement : MonoBehaviour
         //jump height equation: v = sqrt(-2 * jumpheight * gravity
         //if (jump)
         //{
-        //   //isJumping = animator.GetBool(jumpParameter);
+        //    //isJumping = animator.GetBool(jumpParameter);
 
         //    if (isgrounded && jumpaction.triggered)
         //    {
@@ -169,7 +172,7 @@ public class Movement : MonoBehaviour
 
 
 
-        //        verticalVelocity.y += Mathf.Sqrt(-2f * jumpheight * gravity);
+        //     verticalVelocity.y += Mathf.Sqrt(-2f * jumpheight * gravity);
         //    }
         //    if (jump = true)
         //    {
@@ -236,11 +239,26 @@ public class Movement : MonoBehaviour
 
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
             {
+               
+                //jumpingVelocity = Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+                //playerVelocity = move2Direction;
+                //playerVelocity.y = jumpingVelocity;
+
+
+
+                //float jumpingVelocity = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+                ////Vector3 playerVelocity = horizontalVelocity;
+                ////playerVelocity.y = jumpingVelocity;
+                //verticalVelocity.y = jumpingVelocity;
                 animator.SetTrigger(jumpParameter1);
+
+                //verticalVelocity.y += Mathf.Sqrt(-3.0f * jumpHeight * gravity);
                 print("hi jump");
             }
-           
-
+            //verticalVelocity.y += gravity * Time.deltaTime;
+            //controller.Move(verticalVelocity * Time.deltaTime);
+            //     verticalVelocity.y += gravity * Time.deltaTime;
+            //controller.Move(verticalVelocity * Time.deltaTime);
             //animator.SetBool(jumpParameter, true);
 
             //jumpingVelocity = Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);

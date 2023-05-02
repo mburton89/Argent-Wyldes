@@ -24,30 +24,30 @@ public class LeshenAI : MonoBehaviour
         AI.destination= dest;
         if (movement.ritualCollected == 1)
         {
-            AI.speed = 1.5f;
+            AI.speed = 6f;
             //anim.speed = .7f;
         }
         if (movement.ritualCollected == 2)
         {
-            AI.speed = 1.7f;
+            AI.speed = 6.4f;
             //anim.speed = .8f;
 
         }
         if (movement.ritualCollected == 3)
         {
-            AI.speed = 2.0f;
+            AI.speed = 7.2f;
             anim.speed = 1f;
 
         }
         if (movement.ritualCollected == 4)
         {
-            AI.speed = 2.5f;
+            AI.speed = 7.5f;
             anim.speed = 1.2f;
 
         }
         if (movement.ritualCollected == 5)
         {
-            AI.speed = 3f;
+            AI.speed = 8f;
             anim.speed = 1.4f;
 
         }

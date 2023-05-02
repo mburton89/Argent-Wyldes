@@ -8168,9 +8168,10 @@ MonoBehaviour:
   groundmask:
     serializedVersion: 2
     m_Bits: 8
-  jumpheight: 3.5
+  jumpHeight: 1
   animationSmoothTime: 0.1
   followTarget: {fileID: 0}
+  ritualCollected: 0
   animator: {fileID: 0}
   crouch: 0
   sprint: 0
@@ -8273,6 +8274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b3bdfd8e7016014ab4ce37b0d7c50a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
 --- !u!114 &5393520847422788773
 MonoBehaviour:
   m_ObjectHideFlags: 0

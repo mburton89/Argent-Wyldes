@@ -6,13 +6,14 @@ public class JumpScareTrig : MonoBehaviour
 {
     public GameObject playerObj, jumpscareCam, ambienceLayers;
     public Animator monsterAnim;
-    public LeshenAI leshenAI;
+    public LeshenAI leshen;
     public float jumpscareTime;
 
     private void Start()
     {
         playerObj = FindObjectOfType<Movement>().gameObject;
     }
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -20,7 +21,7 @@ public class JumpScareTrig : MonoBehaviour
         {
             playerObj.SetActive(false);
             jumpscareCam.SetActive(true);
-            leshenAI.enabled = false;
+            leshen.enabled = false;
             monsterAnim.speed = 1;
             monsterAnim.SetTrigger("JumpScare");
             StartCoroutine(endgame());
