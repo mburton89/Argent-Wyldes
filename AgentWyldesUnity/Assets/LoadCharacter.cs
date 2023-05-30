@@ -11,6 +11,7 @@ public class LoadCharacter : MonoBehaviour
     public List<GameObject> characterPrefabs;
     public Transform spawnPoint;
     public TMP_Text label;
+    public TMP_Text introText;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -39,7 +40,24 @@ public class LoadCharacter : MonoBehaviour
                 Destroy(character);
             }
         }
+        IntrsuctionText();
     }
+
+    private void IntrsuctionText() 
+    {
+        StartCoroutine(SetActiveText());
+        
+    }
+
+    IEnumerator SetActiveText()
+    {
+        introText.enabled = true;
+        yield return new WaitForSeconds(10f);
+        introText.enabled = false;
+
+
+    }
+
 
     // Update is called once per frame
     void Update()

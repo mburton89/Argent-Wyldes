@@ -16,6 +16,8 @@ public class gamemanager : MonoBehaviour
     {
 
         completeGameUI.SetActive(true);
+        StartCoroutine(RestartPause());
+
     }
     public void Endgame()
     {
@@ -24,6 +26,7 @@ public class gamemanager : MonoBehaviour
             gamehasEnded = true;
             Debug.Log("game over");
             gameOverUI.SetActive(true);
+            StartCoroutine(RestartPause());
         }
 
     }
@@ -33,7 +36,11 @@ public class gamemanager : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
-
+    IEnumerator RestartPause() 
+    {
+        yield return new WaitForSeconds(5f);
+    Restart();
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
+using TMPro;
 
 public class PickUpItemInterable : InteractableObject
 {
@@ -9,6 +11,8 @@ public class PickUpItemInterable : InteractableObject
     [SerializeField] GameObject monster;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform spawnPosition;
+    [SerializeField] GameObject updateCanvas;
+    [SerializeField] TextMeshProUGUI updatetext;
 
     private void Start()
     {
@@ -33,7 +37,15 @@ public class PickUpItemInterable : InteractableObject
     {
         base.Interact(player);
         player.playerInventory.itemsInInventory.Add(item);
-        if(monster.activeInHierarchy == false)
+        //int ritualcollect = player.playerInventory.itemsInInventory.Count;
+        if (updateCanvas.activeInHierarchy == false)
+        {
+            updateCanvas.SetActive(true);
+        }
+        updatetext.text = "Ritual Objects Collected " + player.playerInventory.itemsInInventory.Count /*+ "/" + 6*/ ;
+        //StartCoroutine(ResetText());
+
+        if (monster.activeInHierarchy == false)
         {
             monster.transform.position = spawnPosition.position;
 
@@ -52,8 +64,17 @@ public class PickUpItemInterable : InteractableObject
         Destroy(gameObject);
        
     }
-
-
+    //private void TurnOffCanvas()
+    //{
+    //    updateCanvas.SetActive(false);
+    //}
+    //IEnumerator ResetText()
+    //{
+    //    yield return new WaitForSeconds(3f);
+      
+    //       TurnOffCanvas();
+        
+    //}
 
 
 

@@ -1,88 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1071249898841728895
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 402518802737282501}
-  - component: {fileID: 3619155921413681760}
-  - component: {fileID: 1575455487712675498}
-  m_Layer: 0
-  m_Name: Ritual_Maskl
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &402518802737282501
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071249898841728895}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 30}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8992503434779146046}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3619155921413681760
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071249898841728895}
-  m_Mesh: {fileID: -2222346464153789849, guid: cb1e041ae99d9e64ab772ae835d6f3bc, type: 3}
---- !u!23 &1575455487712675498
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071249898841728895}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: -6478536213147159724, guid: cb1e041ae99d9e64ab772ae835d6f3bc, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6837246932782308814
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +240,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6837246932782308815}
-  - {fileID: 402518802737282501}
   - {fileID: 2677226316692906106}
   m_Father: {fileID: 6837246933864175370}
   m_RootOrder: 0
@@ -356,6 +272,11 @@ MonoBehaviour:
   interactableCanvas: {fileID: 6837246932782308814}
   interactablebleatCollider: {fileID: 8610911720653581701}
   item: {fileID: 11400000, guid: 4f80d70ddc4ef9c47af59c2ca582f5ac, type: 2}
+  monster: {fileID: 0}
+  agent: {fileID: 0}
+  spawnPosition: {fileID: 0}
+  updateCanvas: {fileID: 0}
+  updatetext: {fileID: 0}
 --- !u!1001 &6793490259816977955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,7 +292,7 @@ PrefabInstance:
     - target: {fileID: 8890167526398981721, guid: 6e2a33263f4ef9c4cac8ceabd4c45caa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8890167526398981721, guid: 6e2a33263f4ef9c4cac8ceabd4c45caa,
         type: 3}
