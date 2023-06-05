@@ -22,6 +22,9 @@ public class Boat : InteractableObject
 
     private Transform _previousWayPoint;
     private Transform _targetWayPoint;
+    public Transform teleportForDock1;
+    public Transform teleportForDock2;
+    public Transform teleportToThis;
     public float elapsedPercentage;
     private float _timeToWayPoint;
     private float _elapsedTime;
@@ -79,6 +82,7 @@ public class Boat : InteractableObject
     }
     private void FixedUpdate()
     {
+        
         Vector3 Playermovement;
         //SetMoving(!isMoving);
         if (isMoving)  
@@ -100,10 +104,24 @@ public class Boat : InteractableObject
 
             if (elapsedPercentage >= 1)
             {
+                float dist1 = Vector3.Distance(movement.transform.position, teleportForDock1.position);
+                float dist2 = Vector3.Distance(movement.transform.position, teleportForDock2.position);
+                 if (dist1 < dist2) 
+                {
+
+                    teleportToThis = teleportForDock1;
+                
+                
+                }
+                else
+                {
+                    teleportToThis = teleportForDock2;
+                }
                 TargetNextWaypoint();
                 isMoving= false;
                 movement.transform.SetParent(null);
                 movement.animator.SetBool("isSitting", false);
+                movement.transform.position = teleportToThis.position;
                 movement.controller.enabled= true;
                 movement.mouseLook.xClamp = 70;
 
